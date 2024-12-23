@@ -42,5 +42,12 @@ namespace Visual
         {
             dgvArticulos.Columns[columna].Visible = false;
         }
+
+        private void btnDetalles_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            frmDetalles formDetalles = new frmDetalles(seleccionado);
+            formDetalles.ShowDialog();
+        }
     }
 }
