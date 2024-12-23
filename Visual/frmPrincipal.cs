@@ -7,14 +7,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Dominio;
+using Negocio;
 namespace Visual
 {
-    public partial class Form1 : Form
+    public partial class frmPrincipal : Form
     {
-        public Form1()
+        public frmPrincipal()
         {
             InitializeComponent();
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            cargarDatos();
+            
+        }
+        private void cargarDatos()
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            List<Articulo> articulos = articuloNegocio.listar();
+            
+            try
+            {
+                dgvArticulos.DataSource = articulos;
+                ocultarColumna(6);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private void ocultarColumna(int columna)
+        {
+            dgvArticulos.Columns[columna].Visible = false;
         }
     }
 }
