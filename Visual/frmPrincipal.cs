@@ -49,5 +49,12 @@ namespace Visual
             frmDetalles formDetalles = new frmDetalles(seleccionado);
             formDetalles.ShowDialog();
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAgregar frmAgregar = new frmAgregar();
+            frmAgregar.ShowDialog();
+            cargarDatos();
+        }
     }
 }
