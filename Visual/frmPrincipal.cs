@@ -32,6 +32,7 @@ namespace Visual
             {
                 dgvArticulos.DataSource = articulos;
                 ocultarColumna(6);
+                ocultarColumna(0);
             }
             catch (Exception ex)
             {
@@ -54,6 +55,14 @@ namespace Visual
         {
             frmAgregar frmAgregar = new frmAgregar();
             frmAgregar.ShowDialog();
+            cargarDatos();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            frmAgregar frmModificar = new frmAgregar(seleccionado);
+            frmModificar.ShowDialog();
             cargarDatos();
         }
     }

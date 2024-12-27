@@ -14,7 +14,7 @@ namespace Negocio
             List<Marca> listaMarca = new List<Marca>();
             try
             {
-                datos.setearConsulta("SELECT Id, Descripcion FROM CATEGORIAS");
+                datos.setearConsulta("SELECT Id, Descripcion FROM MARCAS");
                 datos.ejecutarLectura();
                 while (datos.Reader.Read())
                 {

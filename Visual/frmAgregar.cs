@@ -13,9 +13,16 @@ namespace Visual
 {
     public partial class frmAgregar : Form
     {
+        private Articulo articulo = null;
         public frmAgregar()
         {
             InitializeComponent();
+        }
+        public frmAgregar(Articulo articulo)
+        {   
+            InitializeComponent();
+            Text = "Modificar Articulo";
+            this.articulo = articulo;
         }
 
         private void frmAgregar_Load(object sender, EventArgs e)
@@ -25,7 +32,24 @@ namespace Visual
             try
             {
                 cboCategoria.DataSource = categoriaNegocio.listar();
+                cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
                 cboMarca.DataSource = marcaNegocio.listar();
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
+
+                if (articulo != null) 
+                {
+                    txtCodigo.Text = articulo.CodigoArticulo;
+                    txtNombre.Text = articulo.Nombre;
+                    txtDescripcion.Text = articulo.Descripcion;
+                    txtImagen.Text = articulo.Imagen;
+                    cargarImagen(articulo.Imagen);
+                    txtPrecio.Text = articulo.Precio.ToString();
+                    cboCategoria.SelectedValue = articulo.Categoria.Id;
+                    cboMarca.SelectedValue = articulo.Marca.Id;
+                    
+                }
             }
             catch (Exception ex)
             {
@@ -56,17 +80,39 @@ namespace Visual
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Articulo nuevoArticulo = new Articulo();
-            nuevoArticulo.CodigoArticulo = txtCodigo.Text;
-            nuevoArticulo.Nombre = txtNombre.Text;
-            nuevoArticulo.Descripcion = txtDescripcion.Text;
-            if (esDecimal(txtPrecio.Text))
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+
+            try
             {
-                nuevoArticulo.Precio = decimal.Parse(txtPrecio.Text);
+                if (articulo == null)
+                    articulo = new Articulo();  
+                
+                articulo.CodigoArticulo = txtCodigo.Text;
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;
+                if (esDecimal(txtPrecio.Text))
+                    articulo.Precio = decimal.Parse(txtPrecio.Text);
+                articulo.Marca = (Marca)cboMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                articulo.Imagen = txtImagen.Text;
+
+                if(articulo.Id != 0)
+                {
+                    articuloNegocio.modificarArticulo(articulo);
+                    MessageBox.Show("Modificado Exitosamente");
+                }
+                else
+                {
+                    articuloNegocio.agregarArticulo(articulo);
+                    MessageBox.Show("Agregado Exitosamente");
+                }
+
+                Close();
             }
-            else
+            catch (Exception)
             {
-                nuevoArticulo.Precio = 0;
+
+                throw;
             }
             
         }

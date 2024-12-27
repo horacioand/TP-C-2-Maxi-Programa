@@ -205,6 +205,7 @@
             this.Controls.Add(this.lblDetalles);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmDetalles";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Detalles";
             this.Load += new System.EventHandler(this.frmDetalles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
