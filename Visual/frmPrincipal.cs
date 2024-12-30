@@ -13,6 +13,7 @@ namespace Visual
 {
     public partial class frmPrincipal : Form
     {
+        private List<Articulo> articulos;
         public frmPrincipal()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace Visual
         private void cargarDatos()
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-            List<Articulo> articulos = articuloNegocio.listar();
+            articulos = articuloNegocio.listar();
             
             try
             {
@@ -64,6 +65,29 @@ namespace Visual
             frmAgregar frmModificar = new frmAgregar(seleccionado);
             frmModificar.ShowDialog();
             cargarDatos();
+        }
+
+        private void btnEliminarf_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            try
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                DialogResult respuesta = MessageBox.Show("Desea borrar el registro?", "Registro eliminado",MessageBoxButtons.YesNo);
+                if (respuesta == DialogResult.Yes)
+                {
+                    articuloNegocio.eliminarFisico(seleccionado.Id);
+                    MessageBox.Show("Eliminado correctamente");
+                    cargarDatos();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+            
         }
     }
 }

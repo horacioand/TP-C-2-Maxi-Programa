@@ -102,5 +102,21 @@ namespace Negocio
             }
             finally { datos.cerrarConexion(); }
         }
+        public void eliminarFisico(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("DELETE FROM ARTICULOS WHERE ID = @id");
+                datos.setearParametro("@id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally{ datos.cerrarConexion(); };
+        }
     }
 }
