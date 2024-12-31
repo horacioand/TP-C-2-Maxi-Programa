@@ -20,21 +20,27 @@ namespace Visual
             this.articulo = articulo;
         }
 
+        //Carga de datos del articulo seleccionado en cajas de texto (detalles)
         private void frmDetalles_Load(object sender, EventArgs e)
         {
-            txtCodigo.Text = articulo.CodigoArticulo;
-            txtNombre.Text = articulo.Nombre;
-            txtDescripcion.Text = articulo.Descripcion;
-            txtMarca.Text = articulo.Marca.Descripcion;
-            txtCategoria.Text = articulo.Categoria.Descripcion;
-            txtPrecio.Text = articulo.Precio.ToString();
-            cargarImagen(articulo.Imagen);
+            try
+            {
+                txtCodigo.Text = articulo.CodigoArticulo;
+                txtNombre.Text = articulo.Nombre;
+                txtDescripcion.Text = articulo.Descripcion;
+                txtMarca.Text = articulo.Marca.Descripcion;
+                txtCategoria.Text = articulo.Categoria.Descripcion;
+                txtPrecio.Text = articulo.Precio.ToString();
+                cargarImagen(articulo.Imagen);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        
         private void cargarImagen(string imagen)
         {
             try
@@ -47,6 +53,11 @@ namespace Visual
             }
             
         }
-
+        
+        //Cierre de formulario
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

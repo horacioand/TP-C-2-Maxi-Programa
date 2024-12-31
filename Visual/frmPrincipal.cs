@@ -22,8 +22,9 @@ namespace Visual
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             cargarDatos();
-            
         }
+
+        //Funcion carga de datos en dataGridView
         private void cargarDatos()
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
@@ -40,11 +41,14 @@ namespace Visual
                 MessageBox.Show(ex.ToString());
             }
         }
+        //Funcion ocultar columna en dgv
         private void ocultarColumna(int columna)
         {
             dgvArticulos.Columns[columna].Visible = false;
         }
 
+
+        //Nueva ventana form detalles
         private void btnDetalles_Click(object sender, EventArgs e)
         {
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
@@ -52,6 +56,7 @@ namespace Visual
             formDetalles.ShowDialog();
         }
 
+        //Nueva ventana form agregar articulo
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmAgregar frmAgregar = new frmAgregar();
@@ -59,6 +64,7 @@ namespace Visual
             cargarDatos();
         }
 
+        //Nueva ventana modificar articulo
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
@@ -67,13 +73,14 @@ namespace Visual
             cargarDatos();
         }
 
+        //Boton eliminar artículo (físico)
         private void btnEliminarf_Click(object sender, EventArgs e)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             try
             {
                 Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                DialogResult respuesta = MessageBox.Show("Desea borrar el registro?", "Registro eliminado",MessageBoxButtons.YesNo);
+                DialogResult respuesta = MessageBox.Show("Desea borrar el registro?", "Registro eliminado", MessageBoxButtons.YesNo);
                 if (respuesta == DialogResult.Yes)
                 {
                     articuloNegocio.eliminarFisico(seleccionado.Id);

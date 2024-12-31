@@ -13,11 +13,13 @@ namespace Visual
 {
     public partial class frmAgregar : Form
     {
+        //objeto articulo null, asigno si traigo un obj enlazado desde principal si estoy modificando o creo uno nuevo si estoy agregando
         private Articulo articulo = null;
         public frmAgregar()
         {
             InitializeComponent();
         }
+        //Sobrecarga para traer un objeto desde formulario principal
         public frmAgregar(Articulo articulo)
         {   
             InitializeComponent();
@@ -57,10 +59,7 @@ namespace Visual
             }
         }
 
-        private void btnCerrar_Click_1(object sender, EventArgs e)
-        {
-            Close();
-        }
+        
 
         private void txtImagen_Leave(object sender, EventArgs e)
         {
@@ -117,10 +116,16 @@ namespace Visual
             
         }
         
+        //Validar precio
         private bool esDecimal(string texto)
         {
             decimal resultado;
             return decimal.TryParse(texto, out resultado);
+        }
+        //Cerrar Formulario
+        private void btnCerrar_Click_1(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
