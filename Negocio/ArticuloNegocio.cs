@@ -97,7 +97,6 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally { datos.cerrarConexion(); }

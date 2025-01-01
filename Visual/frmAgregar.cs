@@ -73,7 +73,7 @@ namespace Visual
             }
             catch (Exception)
             {
-                pbxArticulo.Load("https://doc24.com.ar/wp-content/uploads/2023/10/placeholder-2-1.png");
+                pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8bikI-KUuM1IWosgqDRS5jyv2U_PPYlG6Tg&s");
             }
         }
 
@@ -89,8 +89,10 @@ namespace Visual
                 articulo.CodigoArticulo = txtCodigo.Text;
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
+
                 if (esDecimal(txtPrecio.Text))
                     articulo.Precio = decimal.Parse(txtPrecio.Text);
+                
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Imagen = txtImagen.Text;
@@ -108,10 +110,9 @@ namespace Visual
 
                 Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                MessageBox.Show(ex.ToString());
             }
             
         }

@@ -33,6 +33,9 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.lblFiltroRapido = new System.Windows.Forms.Label();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,11 +47,11 @@
             this.dgvArticulos.AllowUserToResizeRows = false;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvArticulos.Location = new System.Drawing.Point(12, 12);
+            this.dgvArticulos.Location = new System.Drawing.Point(12, 39);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(776, 333);
+            this.dgvArticulos.Size = new System.Drawing.Size(776, 306);
             this.dgvArticulos.TabIndex = 0;
             // 
             // btnDetalles
@@ -83,7 +86,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(421, 353);
+            this.btnEliminar.Location = new System.Drawing.Point(255, 354);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 4;
@@ -91,11 +94,42 @@
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminarf_Click);
             // 
+            // lblFiltroRapido
+            // 
+            this.lblFiltroRapido.AutoSize = true;
+            this.lblFiltroRapido.Location = new System.Drawing.Point(12, 23);
+            this.lblFiltroRapido.Name = "lblFiltroRapido";
+            this.lblFiltroRapido.Size = new System.Drawing.Size(69, 13);
+            this.lblFiltroRapido.TabIndex = 5;
+            this.lblFiltroRapido.Text = "Filtro Rápido:";
+            // 
+            // txtFiltro
+            // 
+            this.txtFiltro.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtFiltro.Location = new System.Drawing.Point(87, 16);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(215, 20);
+            this.txtFiltro.TabIndex = 6;
+            this.txtFiltro.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtFiltro_KeyUp);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(336, 354);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 7;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 389);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.txtFiltro);
+            this.Controls.Add(this.lblFiltroRapido);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
@@ -108,6 +142,7 @@
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -118,6 +153,9 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Label lblFiltroRapido;
+        private System.Windows.Forms.TextBox txtFiltro;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }
 
