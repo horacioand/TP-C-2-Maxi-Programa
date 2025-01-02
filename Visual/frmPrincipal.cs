@@ -22,6 +22,10 @@ namespace Visual
         private void frmPrincipal_Load(object sender, EventArgs e)  //Carga de formulario
         {
             cargarDatos();
+            cboCampo.Items.Add("Código");
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Descripcion");
+            cboCampo.Items.Add("Precio");
         }
         
         private void cargarDatos()  //Funcion carga de datos en dataGridView
@@ -108,6 +112,18 @@ namespace Visual
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            try
+            {
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAv.Text;
+                dgvArticulos.DataSource = articuloNegocio.filtrarArticulo(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
             
 
         }
@@ -128,6 +144,25 @@ namespace Visual
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = listaFiltrada;
             ocultarColumnas();
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+            if (opcion == "Precio")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con..");
+                cboCriterio.Items.Add("Termina con..");
+                cboCriterio.Items.Add("Contiene..");
+            }
         }
     }
 }

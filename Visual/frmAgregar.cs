@@ -19,14 +19,12 @@ namespace Visual
         {
             InitializeComponent();
         }
-        //Sobrecarga para traer un objeto desde formulario principal
-        public frmAgregar(Articulo articulo)
+        public frmAgregar(Articulo articulo)    //Sobrecarga para traer un objeto desde formulario principal
         {   
             InitializeComponent();
             Text = "Modificar Articulo";
             this.articulo = articulo;
         }
-
         private void frmAgregar_Load(object sender, EventArgs e)
         {
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
@@ -58,9 +56,6 @@ namespace Visual
                 MessageBox.Show(ex.ToString());
             }
         }
-
-        
-
         private void txtImagen_Leave(object sender, EventArgs e)
         {
             cargarImagen(txtImagen.Text);
@@ -76,7 +71,6 @@ namespace Visual
                 pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8bikI-KUuM1IWosgqDRS5jyv2U_PPYlG6Tg&s");
             }
         }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
@@ -115,16 +109,13 @@ namespace Visual
                 MessageBox.Show(ex.ToString());
             }
             
-        }
-        
-        //Validar precio
-        private bool esDecimal(string texto)
+        } 
+        private bool esDecimal(string texto)    //Validar precio
         {
             decimal resultado;
             return decimal.TryParse(texto, out resultado);
         }
-        //Cerrar Formulario
-        private void btnCerrar_Click_1(object sender, EventArgs e)
+        private void btnCerrar_Click_1(object sender, EventArgs e)  //Cerrar Formulario
         {
             Close();
         }

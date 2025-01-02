@@ -117,5 +117,112 @@ namespace Negocio
             }
             finally{ datos.cerrarConexion(); };
         }
+        public List<Articulo> filtrarArticulo(string campo, string criterio, string filtro)
+        {
+            List<Articulo> listaArticulos = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Id AS idMarca, M.Descripcion AS Marca, c.Id AS idCategoria, C.Descripcion AS Categoria,ImagenUrl, Precio FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE IdMarca = M.Id AND IdCategoria = C.Id AND ";
+                if(campo=="Precio")
+                {
+                    if (string.IsNullOrEmpty(filtro))
+                    {
+                        filtro = "0";
+                    }
+                    switch (criterio)
+                    {
+                        case ("Mayor a"):
+                            consulta += "Precio > " + filtro;
+                            break;
+                        case ("Menor a"):
+                            consulta += "Precio < " + filtro;
+                            break;
+                        default:
+                            consulta += "Precio = " + filtro;
+                            break;
+                    }
+                }
+                else if(campo == "Código")
+                {
+                    switch (criterio)
+                    {
+                        case ("Comienza con.."):
+                            consulta += "Codigo like '" + filtro + "%'";
+                            break;
+                        case ("Termina con.."):
+                            consulta += "Codigo like '%" + filtro + "'";
+                            break;
+                        default:
+                            consulta += "Codigo like '%" + filtro + "%'";
+                            break;
+                    }
+                }
+                else if (campo == "Nombre")
+                {
+                    switch (criterio)
+                    {
+                        case ("Comienza con.."):
+                            consulta += "Nombre like '"+filtro+"%'";
+                            break;
+                        case ("Termina con.."):
+                            consulta += "Nombre like '%"+filtro+"'";
+                            break;
+                        default:
+                            consulta += "Nombre like '%"+filtro+"%'";
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (criterio)
+                    {
+                        case ("Comienza con.."):
+                            consulta += "A.Descripcion like '" + filtro + "%'";
+                            break;
+                        case ("Termina con.."):
+                            consulta += "A.Descripcion like '%" + filtro + "'";
+                            break;
+                        default:
+                            consulta += "A.Descripcion like '%" + filtro + "%'";
+                            break;
+                    }
+                }
+
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+                while (datos.Reader.Read())
+                {
+                    Articulo auxiliar = new Articulo();
+                    auxiliar.Id = (int)datos.Reader["Id"];
+                    if (!(datos.Reader["Codigo"] is DBNull))
+                        auxiliar.CodigoArticulo = (string)datos.Reader["Codigo"];
+                    if (!(datos.Reader["Nombre"] is DBNull))
+                        auxiliar.Nombre = (string)datos.Reader["Nombre"];
+                    auxiliar.Descripcion = (string)datos.Reader["Descripcion"];
+                    if (!(datos.Reader["ImagenUrl"] is DBNull))
+                        auxiliar.Imagen = (string)datos.Reader["ImagenUrl"];
+                    if (!(datos.Reader["Precio"] is DBNull))
+                        auxiliar.Precio = (decimal)datos.Reader["Precio"];
+                    auxiliar.Marca = new Marca();
+                    if (!(datos.Reader["idMarca"] is DBNull))
+                        auxiliar.Marca.Id = (int)datos.Reader["idMarca"];
+                    if (!(datos.Reader["Marca"] is DBNull))
+                        auxiliar.Marca.Descripcion = (string)datos.Reader["Marca"];
+                    auxiliar.Categoria = new Categoria();
+                    if (!(datos.Reader["idCategoria"] is DBNull))
+                        auxiliar.Categoria.Id = (int)datos.Reader["idCategoria"];
+                    if (!(datos.Reader["Categoria"] is DBNull))
+                        auxiliar.Categoria.Descripcion = (string)datos.Reader["Categoria"];
+                    listaArticulos.Add(auxiliar);
+                }
+                return listaArticulos;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
