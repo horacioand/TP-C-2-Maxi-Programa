@@ -19,13 +19,16 @@ namespace Visual
             InitializeComponent();
         }
 
-        private void frmPrincipal_Load(object sender, EventArgs e)
+        private void frmPrincipal_Load(object sender, EventArgs e)  //Carga de formulario
         {
             cargarDatos();
+            cboCampo.Items.Add("Código");
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Descripcion");
+            cboCampo.Items.Add("Precio");
         }
-
-        //Funcion carga de datos en dataGridView
-        private void cargarDatos()
+        
+        private void cargarDatos()  //Funcion carga de datos en dataGridView
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             articulos = articuloNegocio.listar();
@@ -33,48 +36,57 @@ namespace Visual
             try
             {
                 dgvArticulos.DataSource = articulos;
-                ocultarColumna(6);
-                ocultarColumna(0);
+                ocultarColumnas();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
         }
-        //Funcion ocultar columna en dgv
-        private void ocultarColumna(int columna)
+
+        private void ocultarColumnas()  //Funcion ocultar columna en dgv
         {
-            dgvArticulos.Columns[columna].Visible = false;
+            dgvArticulos.Columns[0].Visible = false;
+            dgvArticulos.Columns[6].Visible = false;
+        }
+       
+        private void btnDetalles_Click(object sender, EventArgs e)  //Nueva ventana form detalles
+        {
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                frmDetalles formDetalles = new frmDetalles(seleccionado);
+                formDetalles.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione un artículo");
+            }
         }
 
-
-        //Nueva ventana form detalles
-        private void btnDetalles_Click(object sender, EventArgs e)
-        {
-            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            frmDetalles formDetalles = new frmDetalles(seleccionado);
-            formDetalles.ShowDialog();
-        }
-
-        //Nueva ventana form agregar articulo
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)   //Nueva ventana form agregar articulo
         {
             frmAgregar frmAgregar = new frmAgregar();
             frmAgregar.ShowDialog();
             cargarDatos();
         }
 
-        //Nueva ventana modificar articulo
-        private void btnModificar_Click(object sender, EventArgs e)
+        private void btnModificar_Click(object sender, EventArgs e) //Nueva ventana modificar articulo
         {
-            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            frmAgregar frmModificar = new frmAgregar(seleccionado);
-            frmModificar.ShowDialog();
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                frmAgregar frmModificar = new frmAgregar(seleccionado);
+                frmModificar.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione un artículo");
+            }
             cargarDatos();
         }
 
-        //Boton eliminar artículo (físico)
-        private void btnEliminarf_Click(object sender, EventArgs e)
+        private void btnEliminarf_Click(object sender, EventArgs e) //Boton eliminar artículo (físico)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             try
@@ -93,8 +105,64 @@ namespace Visual
             {
                 MessageBox.Show(ex.ToString());
             }
+
+
+        }
+
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            try
+            {
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAv.Text;
+                dgvArticulos.DataSource = articuloNegocio.filtrarArticulo(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
             
-            
+
+        }
+
+        private void txtFiltro_KeyUp(object sender, KeyEventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+            string filtro = txtFiltro.Text;
+            if (filtro.Length >= 2)
+            {
+                listaFiltrada = articulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+
+            }
+            else
+            {
+                listaFiltrada = articulos;
+            }
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = listaFiltrada;
+            ocultarColumnas();
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+            if (opcion == "Precio")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con..");
+                cboCriterio.Items.Add("Termina con..");
+                cboCriterio.Items.Add("Contiene..");
+            }
         }
     }
 }

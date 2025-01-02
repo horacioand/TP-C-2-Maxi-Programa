@@ -73,7 +73,7 @@
             this.txtPrecio.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtPrecio.Location = new System.Drawing.Point(144, 220);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(115, 20);
+            this.txtPrecio.Size = new System.Drawing.Size(147, 20);
             this.txtPrecio.TabIndex = 27;
             // 
             // txtDescripcion
@@ -81,7 +81,7 @@
             this.txtDescripcion.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtDescripcion.Location = new System.Drawing.Point(144, 142);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(115, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(147, 20);
             this.txtDescripcion.TabIndex = 25;
             // 
             // txtNombre
@@ -89,7 +89,7 @@
             this.txtNombre.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtNombre.Location = new System.Drawing.Point(144, 116);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(115, 20);
+            this.txtNombre.Size = new System.Drawing.Size(147, 20);
             this.txtNombre.TabIndex = 23;
             // 
             // txtCodigo
@@ -97,7 +97,7 @@
             this.txtCodigo.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtCodigo.Location = new System.Drawing.Point(144, 90);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(115, 20);
+            this.txtCodigo.Size = new System.Drawing.Size(147, 20);
             this.txtCodigo.TabIndex = 22;
             // 
             // lblPrecio
@@ -169,7 +169,7 @@
             this.cboCategoria.FormattingEnabled = true;
             this.cboCategoria.Location = new System.Drawing.Point(144, 168);
             this.cboCategoria.Name = "cboCategoria";
-            this.cboCategoria.Size = new System.Drawing.Size(114, 21);
+            this.cboCategoria.Size = new System.Drawing.Size(146, 21);
             this.cboCategoria.TabIndex = 30;
             // 
             // cboMarca
@@ -177,7 +177,7 @@
             this.cboMarca.FormattingEnabled = true;
             this.cboMarca.Location = new System.Drawing.Point(144, 195);
             this.cboMarca.Name = "cboMarca";
-            this.cboMarca.Size = new System.Drawing.Size(114, 21);
+            this.cboMarca.Size = new System.Drawing.Size(146, 21);
             this.cboMarca.TabIndex = 31;
             // 
             // lblImagen
@@ -194,7 +194,7 @@
             this.txtImagen.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtImagen.Location = new System.Drawing.Point(144, 246);
             this.txtImagen.Name = "txtImagen";
-            this.txtImagen.Size = new System.Drawing.Size(115, 20);
+            this.txtImagen.Size = new System.Drawing.Size(146, 20);
             this.txtImagen.TabIndex = 33;
             this.txtImagen.Leave += new System.EventHandler(this.txtImagen_Leave);
             // 
@@ -262,5 +262,6 @@
         private System.Windows.Forms.Label lblImagen;
         private System.Windows.Forms.TextBox txtImagen;
         private System.Windows.Forms.Button btnAgregar;
+        //private System.Windows.Forms.Button btnAgregarImagen;
     }
 }
