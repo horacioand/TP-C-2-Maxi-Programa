@@ -9,24 +9,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using Negocio;
+using System.IO;
+using System.Configuration;
 namespace Visual
 {
     public partial class frmAgregar : Form
     {
         //objeto articulo null, asigno si traigo un obj enlazado desde principal si estoy modificando o creo uno nuevo si estoy agregando
         private Articulo articulo = null;
+        private OpenFileDialog archivo = null;
         public frmAgregar()
         {
             InitializeComponent();
         }
-        //Sobrecarga para traer un objeto desde formulario principal
-        public frmAgregar(Articulo articulo)
+        public frmAgregar(Articulo articulo)    //Sobrecarga para traer un objeto desde formulario principal
         {   
             InitializeComponent();
             Text = "Modificar Articulo";
             this.articulo = articulo;
         }
-
         private void frmAgregar_Load(object sender, EventArgs e)
         {
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
@@ -58,9 +59,6 @@ namespace Visual
                 MessageBox.Show(ex.ToString());
             }
         }
-
-        
-
         private void txtImagen_Leave(object sender, EventArgs e)
         {
             cargarImagen(txtImagen.Text);
@@ -73,10 +71,9 @@ namespace Visual
             }
             catch (Exception)
             {
-                pbxArticulo.Load("https://doc24.com.ar/wp-content/uploads/2023/10/placeholder-2-1.png");
+                pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8bikI-KUuM1IWosgqDRS5jyv2U_PPYlG6Tg&s");
             }
         }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
@@ -89,8 +86,10 @@ namespace Visual
                 articulo.CodigoArticulo = txtCodigo.Text;
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
+
                 if (esDecimal(txtPrecio.Text))
                     articulo.Precio = decimal.Parse(txtPrecio.Text);
+                
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Imagen = txtImagen.Text;
@@ -105,27 +104,41 @@ namespace Visual
                     articuloNegocio.agregarArticulo(articulo);
                     MessageBox.Show("Agregado Exitosamente");
                 }
-
+                //if (archivo != null && !(txtImagen.Text.ToUpper().Contains("HTTP")))   //si se carga una imagen de forma local se guarda
+                //{
+                //    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
+                //}
                 Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                MessageBox.Show(ex.ToString());
             }
             
-        }
-        
-        //Validar precio
-        private bool esDecimal(string texto)
+        } 
+        private bool esDecimal(string texto)    //Validar precio
         {
             decimal resultado;
             return decimal.TryParse(texto, out resultado);
         }
-        //Cerrar Formulario
-        private void btnCerrar_Click_1(object sender, EventArgs e)
+        private void btnCerrar_Click_1(object sender, EventArgs e)  //Cerrar Formulario
         {
             Close();
         }
+
+        //private void btnAgregarImagen_Click(object sender, EventArgs e) //Añadir imagen local
+        //{
+        //    archivo = new OpenFileDialog();
+        //    archivo.Filter = "jpg|*.jpg;|png|*.png";
+            
+        //    if(archivo.ShowDialog() == DialogResult.OK)
+        //    {
+        //        txtImagen.Text = archivo.FileName;
+        //        cargarImagen(archivo.FileName);
+
+                //Para guardar la img necesito usar system.io, la configuracion en app.config y la referencia a system.configuration
+                //File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
+        //    }
+        //}
     }
 }
