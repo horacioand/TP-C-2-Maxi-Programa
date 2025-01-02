@@ -117,7 +117,7 @@
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(100, 20);
-            this.txtCodigo.TabIndex = 7;
+            this.txtCodigo.TabIndex = 0;
             // 
             // txtNombre
             // 
@@ -126,7 +126,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.ReadOnly = true;
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
-            this.txtNombre.TabIndex = 8;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtCategoria
             // 
@@ -135,7 +135,7 @@
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.ReadOnly = true;
             this.txtCategoria.Size = new System.Drawing.Size(100, 20);
-            this.txtCategoria.TabIndex = 9;
+            this.txtCategoria.TabIndex = 3;
             // 
             // txtDescripcion
             // 
@@ -144,7 +144,7 @@
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.ReadOnly = true;
             this.txtDescripcion.Size = new System.Drawing.Size(100, 20);
-            this.txtDescripcion.TabIndex = 10;
+            this.txtDescripcion.TabIndex = 2;
             // 
             // txtMarca
             // 
@@ -153,7 +153,7 @@
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.ReadOnly = true;
             this.txtMarca.Size = new System.Drawing.Size(100, 20);
-            this.txtMarca.TabIndex = 11;
+            this.txtMarca.TabIndex = 4;
             // 
             // txtPrecio
             // 
@@ -162,7 +162,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.ReadOnly = true;
             this.txtPrecio.Size = new System.Drawing.Size(100, 20);
-            this.txtPrecio.TabIndex = 12;
+            this.txtPrecio.TabIndex = 5;
             // 
             // pbxArticulo
             // 
@@ -178,7 +178,7 @@
             this.btnCerrar.Location = new System.Drawing.Point(109, 219);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 23);
-            this.btnCerrar.TabIndex = 14;
+            this.btnCerrar.TabIndex = 6;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);

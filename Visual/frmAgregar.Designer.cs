@@ -46,6 +46,9 @@
             this.lblImagen = new System.Windows.Forms.Label();
             this.txtImagen = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +57,7 @@
             this.btnCerrar.Location = new System.Drawing.Point(193, 284);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 23);
-            this.btnCerrar.TabIndex = 29;
+            this.btnCerrar.TabIndex = 8;
             this.btnCerrar.Text = "Cancelar";
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click_1);
@@ -74,7 +77,7 @@
             this.txtPrecio.Location = new System.Drawing.Point(144, 220);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(147, 20);
-            this.txtPrecio.TabIndex = 27;
+            this.txtPrecio.TabIndex = 5;
             // 
             // txtDescripcion
             // 
@@ -82,7 +85,7 @@
             this.txtDescripcion.Location = new System.Drawing.Point(144, 142);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(147, 20);
-            this.txtDescripcion.TabIndex = 25;
+            this.txtDescripcion.TabIndex = 2;
             // 
             // txtNombre
             // 
@@ -90,7 +93,7 @@
             this.txtNombre.Location = new System.Drawing.Point(144, 116);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(147, 20);
-            this.txtNombre.TabIndex = 23;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtCodigo
             // 
@@ -98,7 +101,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(144, 90);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(147, 20);
-            this.txtCodigo.TabIndex = 22;
+            this.txtCodigo.TabIndex = 0;
             // 
             // lblPrecio
             // 
@@ -170,7 +173,7 @@
             this.cboCategoria.Location = new System.Drawing.Point(144, 168);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(146, 21);
-            this.cboCategoria.TabIndex = 30;
+            this.cboCategoria.TabIndex = 3;
             // 
             // cboMarca
             // 
@@ -178,7 +181,7 @@
             this.cboMarca.Location = new System.Drawing.Point(144, 195);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(146, 21);
-            this.cboMarca.TabIndex = 31;
+            this.cboMarca.TabIndex = 4;
             // 
             // lblImagen
             // 
@@ -195,7 +198,7 @@
             this.txtImagen.Location = new System.Drawing.Point(144, 246);
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(146, 20);
-            this.txtImagen.TabIndex = 33;
+            this.txtImagen.TabIndex = 6;
             this.txtImagen.Leave += new System.EventHandler(this.txtImagen_Leave);
             // 
             // btnAgregar
@@ -203,16 +206,52 @@
             this.btnAgregar.Location = new System.Drawing.Point(102, 284);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 34;
+            this.btnAgregar.TabIndex = 7;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(135, 92);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(11, 13);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "*";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(135, 119);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(11, 13);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "*";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(135, 223);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(11, 13);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "*";
             // 
             // frmAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 333);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtImagen);
             this.Controls.Add(this.lblImagen);
@@ -262,6 +301,9 @@
         private System.Windows.Forms.Label lblImagen;
         private System.Windows.Forms.TextBox txtImagen;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
         //private System.Windows.Forms.Button btnAgregarImagen;
     }
 }

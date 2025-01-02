@@ -66,7 +66,7 @@
             this.btnDetalles.Location = new System.Drawing.Point(93, 354);
             this.btnDetalles.Name = "btnDetalles";
             this.btnDetalles.Size = new System.Drawing.Size(75, 23);
-            this.btnDetalles.TabIndex = 1;
+            this.btnDetalles.TabIndex = 6;
             this.btnDetalles.Text = "Detalles";
             this.btnDetalles.UseVisualStyleBackColor = true;
             this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
@@ -76,7 +76,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(12, 354);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 2;
+            this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -86,7 +86,7 @@
             this.btnModificar.Location = new System.Drawing.Point(174, 354);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
-            this.btnModificar.TabIndex = 3;
+            this.btnModificar.TabIndex = 7;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -96,7 +96,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(255, 354);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 4;
+            this.btnEliminar.TabIndex = 8;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminarf_Click);
@@ -116,7 +116,7 @@
             this.txtFiltro.Location = new System.Drawing.Point(87, 16);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(215, 20);
-            this.txtFiltro.TabIndex = 6;
+            this.txtFiltro.TabIndex = 0;
             this.txtFiltro.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtFiltro_KeyUp);
             // 
             // btnBuscar
@@ -124,7 +124,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(667, 196);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 7;
+            this.btnBuscar.TabIndex = 4;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -145,7 +145,7 @@
             this.cboCampo.Location = new System.Drawing.Point(667, 76);
             this.cboCampo.Name = "cboCampo";
             this.cboCampo.Size = new System.Drawing.Size(121, 21);
-            this.cboCampo.TabIndex = 9;
+            this.cboCampo.TabIndex = 1;
             this.cboCampo.SelectedIndexChanged += new System.EventHandler(this.cboCampo_SelectedIndexChanged);
             // 
             // lblCriterio
@@ -164,7 +164,7 @@
             this.cboCriterio.Location = new System.Drawing.Point(667, 122);
             this.cboCriterio.Name = "cboCriterio";
             this.cboCriterio.Size = new System.Drawing.Size(121, 21);
-            this.cboCriterio.TabIndex = 11;
+            this.cboCriterio.TabIndex = 2;
             // 
             // lblFiltroAv
             // 
@@ -180,7 +180,7 @@
             this.txtFiltroAv.Location = new System.Drawing.Point(667, 170);
             this.txtFiltroAv.Name = "txtFiltroAv";
             this.txtFiltroAv.Size = new System.Drawing.Size(121, 20);
-            this.txtFiltroAv.TabIndex = 13;
+            this.txtFiltroAv.TabIndex = 3;
             // 
             // label1
             // 
