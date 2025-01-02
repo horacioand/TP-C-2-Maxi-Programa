@@ -20,8 +20,7 @@ namespace Visual
             this.articulo = articulo;
         }
 
-        //Carga de datos del articulo seleccionado en cajas de texto (detalles)
-        private void frmDetalles_Load(object sender, EventArgs e)
+        private void frmDetalles_Load(object sender, EventArgs e)   //Carga de datos del articulo seleccionado en cajas de texto (detalles)
         {
             try
             {
@@ -40,7 +39,6 @@ namespace Visual
             }
         }
 
-        
         private void cargarImagen(string imagen)
         {
             try
@@ -49,13 +47,12 @@ namespace Visual
             }
             catch (Exception)
             {
-                pbxArticulo.Load("https://doc24.com.ar/wp-content/uploads/2023/10/placeholder-2-1.png");
+                pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8bikI-KUuM1IWosgqDRS5jyv2U_PPYlG6Tg&s");
             }
             
-        }
+        }//Pendiente centralizar en clase helper
         
-        //Cierre de formulario
-        private void btnCerrar_Click(object sender, EventArgs e)
+        private void btnCerrar_Click(object sender, EventArgs e) //Cierre de formulario
         {
             Close();
         }

@@ -62,7 +62,7 @@ namespace Visual
         private void txtImagen_Leave(object sender, EventArgs e)
         {
             cargarImagen(txtImagen.Text);
-        }
+        }//Evento leave para cargar imagen desde url
         private void cargarImagen(string imagen)
         {
             try
@@ -73,7 +73,7 @@ namespace Visual
             {
                 pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8bikI-KUuM1IWosgqDRS5jyv2U_PPYlG6Tg&s");
             }
-        }
+        }//Pendiente centralizar en clase helper
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
