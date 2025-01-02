@@ -27,6 +27,8 @@ namespace Visual
             InitializeComponent();
             Text = "Modificar Articulo";
             this.articulo = articulo;
+            btnAgregar.Text = "Modificar";
+            lblAgregar.Text = "Modificar Articulo";
         }
         private void frmAgregar_Load(object sender, EventArgs e)
         {
@@ -80,6 +82,10 @@ namespace Visual
 
             try
             {
+                if (validarIngreso())
+                {
+                    return;
+                }
                 if (articulo == null)
                     articulo = new Articulo();  
                 
@@ -115,7 +121,30 @@ namespace Visual
                 MessageBox.Show(ex.ToString());
             }
             
-        } 
+        }
+        private bool validarIngreso()
+        {
+                if (string.IsNullOrEmpty(txtCodigo.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese el código del artículo");
+                    return true;
+                }
+                if (string.IsNullOrEmpty(txtNombre.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese el nombre del artículo");
+                    return true;
+                }if (string.IsNullOrEmpty(txtPrecio.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese el precio del artículo");
+                    return true;
+                }
+                if (!(soloNumeros(txtPrecio.Text)))
+                {
+                    MessageBox.Show("Por favor, el campo precio debe contener solo números");
+                    return true;
+                }
+            return false;
+        }
         private bool esDecimal(string texto)    //Validar precio
         {
             decimal resultado;
@@ -130,15 +159,31 @@ namespace Visual
         //{
         //    archivo = new OpenFileDialog();
         //    archivo.Filter = "jpg|*.jpg;|png|*.png";
-            
+
         //    if(archivo.ShowDialog() == DialogResult.OK)
         //    {
         //        txtImagen.Text = archivo.FileName;
         //        cargarImagen(archivo.FileName);
 
-                //Para guardar la img necesito usar system.io, la configuracion en app.config y la referencia a system.configuration
-                //File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
+        //Para guardar la img necesito usar system.io, la configuracion en app.config y la referencia a system.configuration
+        //File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
         //    }
         //}
+        private bool soloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return true;
+        }//Pendiente centralizar en clase helper
     }
+
 }
