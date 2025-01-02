@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using Negocio;
+using System.IO;
+using System.Configuration;
 namespace Visual
 {
     public partial class frmAgregar : Form
     {
         //objeto articulo null, asigno si traigo un obj enlazado desde principal si estoy modificando o creo uno nuevo si estoy agregando
         private Articulo articulo = null;
+        private OpenFileDialog archivo = null;
         public frmAgregar()
         {
             InitializeComponent();
@@ -101,7 +104,10 @@ namespace Visual
                     articuloNegocio.agregarArticulo(articulo);
                     MessageBox.Show("Agregado Exitosamente");
                 }
-
+                //if (archivo != null && !(txtImagen.Text.ToUpper().Contains("HTTP")))   //si se carga una imagen de forma local se guarda
+                //{
+                //    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
+                //}
                 Close();
             }
             catch (Exception ex)
@@ -119,5 +125,20 @@ namespace Visual
         {
             Close();
         }
+
+        //private void btnAgregarImagen_Click(object sender, EventArgs e) //Añadir imagen local
+        //{
+        //    archivo = new OpenFileDialog();
+        //    archivo.Filter = "jpg|*.jpg;|png|*.png";
+            
+        //    if(archivo.ShowDialog() == DialogResult.OK)
+        //    {
+        //        txtImagen.Text = archivo.FileName;
+        //        cargarImagen(archivo.FileName);
+
+                //Para guardar la img necesito usar system.io, la configuracion en app.config y la referencia a system.configuration
+                //File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
+        //    }
+        //}
     }
 }
