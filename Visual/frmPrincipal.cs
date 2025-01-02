@@ -109,12 +109,59 @@ namespace Visual
 
         }
 
-
+        //Validacion de filtro buscar
+        private bool validarFiltro()
+        {
+            if (cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor seleccione un campo a filtrar");
+                return true;
+            }
+            if (cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor seleccione un criterio a filtrar");
+                return true;
+            }
+            if(cboCampo.SelectedItem.ToString() == "Precio")
+            {
+                if (string.IsNullOrEmpty(txtFiltroAv.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese un dato para filtrar por precio");
+                    return true;
+                }
+                if (!(soloNumeros(txtFiltroAv.Text)))
+                {
+                    MessageBox.Show("Por favor, ingrese solo números para filtrar por precio");
+                    return true;
+                }
+            }
+            return false;
+        }
+        //Validacion solo numeros
+        private bool soloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return true;
+        }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             try
             {
+                if (validarFiltro())
+                {
+                    return;
+                }
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAv.Text;
